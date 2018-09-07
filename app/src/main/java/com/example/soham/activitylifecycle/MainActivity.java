@@ -43,17 +43,19 @@ public class MainActivity extends AppCompatActivity {
         super.onRestoreInstanceState(savedInstanceState);
         Log.d(TAG, "onRestoreInstanceState");
 
-//        if (savedInstanceState != null){
-//            editText.setText(savedInstanceState.getString("text"));
-//        }
+        if (savedInstanceState != null){
+            textView.setText(savedInstanceState.getString("message"));
+            button.setText(savedInstanceState.getString("btn_text"));
+        }
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-        super.onSaveInstanceState(outState, outPersistentState);
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
         Log.d(TAG, "onSaveInstanceState");
 
-//        outState.putString("text", editText.getText().toString());
+        outState.putString("message", textView.getText().toString());
+        outState.putString("btn_text", button.getText().toString());
     }
 
     @Override
